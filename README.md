@@ -3,11 +3,11 @@ demo api with crud operations and Authentication
 
 technologies used:
 
--Spring boot
--Apache maven
--MongoDB
--Junit5
--Mockito
--Google Truth (test assertions Library)
--Mapstruct
--Swagger2
+-Spring boot<br>
+-Apache maven<br>
+-MongoDB<br>
+-Junit5<br>
+-Mockito<br>
+-Google Truth (test assertions Library) <br>
+-Mapstruct<br>
+-Swagger2<br>

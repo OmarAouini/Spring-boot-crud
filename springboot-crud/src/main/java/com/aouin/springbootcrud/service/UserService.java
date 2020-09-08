@@ -6,5 +6,5 @@ import com.aouin.springbootcrud.service.dto.UserDTO;
 
 public interface UserService {
 
-    UserDTO findUserById(Integer id);
+    UserDTO findUserById(Integer id) throws Exception;
 }

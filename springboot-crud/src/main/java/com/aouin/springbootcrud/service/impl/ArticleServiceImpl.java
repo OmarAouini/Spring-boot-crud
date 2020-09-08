@@ -43,27 +43,30 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDTO> getArticlesByFilter(ArticleFilter articleFilter) {
+    public List<ArticleDTO> getArticlesByFilter(ArticleFilter articleFilter) throws Exception {
+        try {
+            Article example = new Article();
 
-        Article example = new Article();
+            if (articleFilter.getId() != null)
+                example.setId(articleFilter.getId());
+            if (articleFilter.getName() != null && !articleFilter.getName().isEmpty())
+                example.setName(articleFilter.getName());
+            if (articleFilter.getPrice() != null)
+                example.setPrice(articleFilter.getPrice());
+            if (articleFilter.getCategory() != null && !articleFilter.getName().isEmpty())
+                example.setCategory(articleFilter.getCategory());
 
-        if (articleFilter.getId() != null)
-            example.setId(articleFilter.getId());
-        if (articleFilter.getName() != null && !articleFilter.getName().isEmpty())
-            example.setName(articleFilter.getName());
-        if (articleFilter.getPrice() != null)
-            example.setPrice(articleFilter.getPrice());
-        if (articleFilter.getCategory() != null && !articleFilter.getName().isEmpty())
-            example.setCategory(articleFilter.getCategory());
+            List<Article> result = this.articleRepository.findAll(Example.of(example));
 
-        List<Article> result = this.articleRepository.findAll(Example.of(example));
+            // min & max price filter
+            if (articleFilter.getMinPrice() != null)
+                result.stream().filter(a -> a.getPrice() > articleFilter.getMinPrice()).collect(Collectors.toList());
+            if (articleFilter.getMaxPrice() != null)
+                result.stream().filter(a -> a.getPrice() < articleFilter.getMaxPrice()).collect(Collectors.toList());
 
-        // min & max price filter
-        if (articleFilter.getMinPrice() != null)
-            result.stream().filter(a -> a.getPrice() > articleFilter.getMinPrice()).collect(Collectors.toList());
-        if (articleFilter.getMaxPrice() != null)
-            result.stream().filter(a -> a.getPrice() < articleFilter.getMaxPrice()).collect(Collectors.toList());
-
-        return result.stream().map(articleMapper::toDTO).collect(Collectors.toList());
+            return result.stream().map(articleMapper::toDTO).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception(e.getLocalizedMessage());
+        }
     }
 }

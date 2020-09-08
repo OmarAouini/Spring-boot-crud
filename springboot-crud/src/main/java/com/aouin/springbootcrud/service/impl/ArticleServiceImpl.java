@@ -16,8 +16,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     private ArticleMapper articleMapper;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper) {
         this.articleRepository = articleRepository;
+        this.articleMapper = articleMapper;
     }
 
     @Override

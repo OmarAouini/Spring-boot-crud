@@ -14,7 +14,7 @@ public class ArticleFilter {
     private Integer id;
     private String name;
     private Float price;
-    private String description;
     private Float minPrice;
     private Float maxPrice;
+    private String category;
 }

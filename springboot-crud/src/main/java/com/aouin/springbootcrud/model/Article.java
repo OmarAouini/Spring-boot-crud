@@ -12,4 +12,5 @@ public class Article {
     private String name;
     private Float price;
     private String description;
+    private String category;
 }

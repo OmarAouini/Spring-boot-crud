@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ArticleService {
 
-    ArticleDTO findArticleById(Integer id);
-    List<ArticleDTO> getAllArticles();
+    ArticleDTO findArticleById(Integer id) throws Exception;
+    List<ArticleDTO> getAllArticles() throws Exception;
 }

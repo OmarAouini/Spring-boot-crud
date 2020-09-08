@@ -1,6 +1,7 @@
 package com.aouin.springbootcrud.service.impl;
 
 import com.aouin.springbootcrud.model.Article;
+import com.aouin.springbootcrud.model.enums.Category;
 import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
@@ -65,6 +66,15 @@ public class ArticleServiceImpl implements ArticleService {
                 result.stream().filter(a -> a.getPrice() < articleFilter.getMaxPrice()).collect(Collectors.toList());
 
             return result.stream().map(articleMapper::toDTO).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception(e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public List<ArticleDTO> getArticlesByCategory(String category) throws Exception {
+        try {
+            return this.articleRepository.findByCategory(category).stream().map(this.articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
             throw new Exception(e.getLocalizedMessage());
         }

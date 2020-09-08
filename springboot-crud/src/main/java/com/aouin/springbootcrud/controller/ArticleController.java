@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/articles")
 @RestController
 public class ArticleController {
 
@@ -23,17 +24,17 @@ public class ArticleController {
         return new ResponseEntity<>(this.articleService.getAllArticles(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/id")
     public ResponseEntity<ArticleDTO> getArticleById(@RequestParam Integer id) throws Exception {
         return new ResponseEntity<>(this.articleService.findArticleById(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/filter")
     public ResponseEntity<List<ArticleDTO>> getArticlesByFilter(@RequestBody ArticleFilter articleFilter) throws Exception {
         return new ResponseEntity<>(this.articleService.getArticlesByFilter(articleFilter), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/category")
     public ResponseEntity<List<ArticleDTO>> getArticlesByCategory(@RequestParam String category) throws Exception {
         return new ResponseEntity<>(this.articleService.getArticlesByCategory(category), HttpStatus.OK);
     }

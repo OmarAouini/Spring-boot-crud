@@ -4,8 +4,10 @@ import com.aouin.springbootcrud.repository.UserRepository;
 import com.aouin.springbootcrud.service.UserService;
 import com.aouin.springbootcrud.service.dto.UserDTO;
 import com.aouin.springbootcrud.service.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 

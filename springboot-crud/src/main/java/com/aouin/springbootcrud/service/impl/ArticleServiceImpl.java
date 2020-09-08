@@ -7,12 +7,14 @@ import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.dto.ArticleFilter;
 import com.aouin.springbootcrud.service.mapper.ArticleMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class ArticleServiceImpl implements ArticleService {
 

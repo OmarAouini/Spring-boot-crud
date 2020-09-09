@@ -1,5 +1,5 @@
 # Spring-boot-crud
-demo api with crud operations and Authentication with JWT,  admin user with privileges, and multiLanguage error messages.<br>
+demo api with crud operations and Authentication with JWT Tokens,  admin user with privileges, and multiLanguage error messages.<br>
 example Unit/integration test are included.<br>
 
 technologies used:
@@ -19,4 +19,4 @@ technologies used:
 
 todos:<br>
 -write tests<br>
--add authentication<br>
+<strike>-add authentication</strike><br>

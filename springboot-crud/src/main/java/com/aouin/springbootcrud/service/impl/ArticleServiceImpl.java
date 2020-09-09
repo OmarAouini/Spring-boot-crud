@@ -22,11 +22,8 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
 
     private ArticleRepository articleRepository;
-
     private ArticleMapper articleMapper;
-
     private TranslationService translationService;
-
     private ArticleValidator articleValidator;
 
     public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper, TranslationService translationService, ArticleValidator articleValidator) {

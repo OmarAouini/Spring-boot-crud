@@ -13,5 +13,9 @@ technologies used:
 -Apache Poi (Excel/csv creation) <br>
 -Mapstruct<br>
 -Swagger2<br>
+-Docker<br>
 -Jacoco (code coverage)<br>
 
+todos:<br>
+-write tests<br>
+-add authentication<br>

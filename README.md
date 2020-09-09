@@ -1,7 +1,6 @@
 # Spring-boot-crud
-demo api with crud operations and Authentication,
-example Unit/integration test are included.
-there's also a multiLanguage error message system.
+demo api with crud operations and Authentication, and multiLanguage error messages.<br>
+example Unit/integration test are included.<br>
 
 technologies used:
 

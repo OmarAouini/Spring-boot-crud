@@ -1,5 +1,6 @@
 # Spring-boot-crud
-demo api with crud operations and Authentication
+demo api with crud operations and Authentication,
+example Unit/integration test are included.
 
 technologies used:
 
@@ -12,4 +13,5 @@ technologies used:
 -Apache Poi (Excel/csv creation) <br>
 -Mapstruct<br>
 -Swagger2<br>
+-Jacoco (code coverage)<br>
 

@@ -15,7 +15,10 @@ public class TranslationService {
     }
 
     public String getMsg(String msg, String lang) {
-        return this.errorMap.get(msg).get(lang);
+        if ( (msg != null && !msg.isEmpty()) && (lang != null && !lang.isEmpty()))
+            return this.errorMap.get(msg).get(lang);
+        else
+            return msg;
     }
 
     private Map<String, Map<String, String>> buildErrorMap() {

@@ -64,7 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
             if (articleFilter.getPrice() != null)
                 example.setPrice(articleFilter.getPrice());
             if (articleFilter.getCategories() != null && !articleFilter.getCategories().isEmpty())
-                example.setCategory(articleFilter.getCategories());
+                example.setCategories(articleFilter.getCategories());
 
             List<Article> result = this.articleRepository.findAll(Example.of(example));
 

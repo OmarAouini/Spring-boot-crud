@@ -21,7 +21,7 @@ public class Article {
     private String name;
     private Float price;
     private String description;
-    private List<String> category;
+    private List<String> categories;
     private ManufactureDetails manufactureDetails;
     private ShippingDetails shippingDetails;
     private Integer stockQuantity;

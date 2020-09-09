@@ -29,7 +29,13 @@ public class ArticleValidator {
     }
 
     private void validateArticleCategory(Article article) throws ArticleValidationException {
-        if (article.getCategory() != null && Arrays.stream(Category.values()).noneMatch(category -> category.toString().equalsIgnoreCase(article.getCategory())))
+
+        if (article.getCategories() != null && !article.getCategories().isEmpty()) {
+            for (String category : article.getCategories()) {
+                if (Arrays.stream(Category.values()).noneMatch(c -> c.toString().equalsIgnoreCase(category)))
+                    throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
+            }
+        } else
             throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
     }
 

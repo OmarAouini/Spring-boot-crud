@@ -1,12 +1,12 @@
 package com.aouin.springbootcrud.service.impl;
 
 import com.aouin.springbootcrud.model.Article;
-import com.aouin.springbootcrud.model.enums.Category;
 import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.dto.ArticleFilter;
 import com.aouin.springbootcrud.service.mapper.ArticleMapper;
+import com.aouin.springbootcrud.service.utils.validators.ArticleValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -77,6 +77,28 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleDTO> getArticlesByCategory(String category) throws Exception {
         try {
             return this.articleRepository.findByCategory(category).stream().map(this.articleMapper::toDTO).collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new Exception(e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public ArticleDTO addArticle(ArticleDTO articleDTO) throws Exception {
+        try {
+            Article toSave = this.articleMapper.toEntity(articleDTO);
+            // validation
+            ArticleValidator.validateCategory(toSave);
+            //saving
+            return this.articleMapper.toDTO(this.articleRepository.save(toSave));
+        } catch (Exception e) {
+            throw new Exception(e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public void deleteArticle(Integer id) throws Exception {
+        try {
+            this.articleRepository.deleteById(id);
         } catch (Exception e) {
             throw new Exception(e.getLocalizedMessage());
         }

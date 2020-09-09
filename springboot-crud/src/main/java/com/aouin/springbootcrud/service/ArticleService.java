@@ -11,4 +11,6 @@ public interface ArticleService {
     List<ArticleDTO> getAllArticles() throws Exception;
     List<ArticleDTO> getArticlesByFilter(ArticleFilter articleFilter) throws Exception;
     List<ArticleDTO> getArticlesByCategory(String category) throws Exception;
+    ArticleDTO addArticle(ArticleDTO articleDTO) throws Exception;
+    void deleteArticle(Integer id) throws Exception;
 }

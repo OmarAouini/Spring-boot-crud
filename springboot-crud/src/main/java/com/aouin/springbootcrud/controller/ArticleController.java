@@ -38,4 +38,15 @@ public class ArticleController {
     public ResponseEntity<List<ArticleDTO>> getArticlesByCategory(@RequestParam String category) throws Exception {
         return new ResponseEntity<>(this.articleService.getArticlesByCategory(category), HttpStatus.OK);
     }
+
+    @PostMapping("/add")
+    public ResponseEntity<ArticleDTO> addArticle(@RequestBody ArticleDTO articleDTO) throws Exception {
+        return new ResponseEntity<>(this.articleService.addArticle(articleDTO), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity deleteArticle(@RequestParam Integer id) throws Exception {
+        this.articleService.deleteArticle(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

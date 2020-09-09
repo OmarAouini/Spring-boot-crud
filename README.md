@@ -1,6 +1,6 @@
 # Spring-boot-crud
-demo api with crud operations and Authentication,
-example Unit/integration test are included.
+demo api with crud operations and Authentication,  admin user with privileges, and multiLanguage error messages.<br>
+example Unit/integration test are included.<br>
 
 technologies used:
 

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +18,11 @@ public class Article {
 
     @Id
     private Integer id;
-
     private String name;
     private Float price;
     private String description;
-    private String category;
+    private List<String> category;
+    private ManufactureDetails manufactureDetails;
+    private ShippingDetails shippingDetails;
+    private Integer stockQuantity;
 }

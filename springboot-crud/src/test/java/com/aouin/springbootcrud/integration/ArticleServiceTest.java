@@ -1,12 +1,10 @@
 package com.aouin.springbootcrud.integration;
 
-import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.impl.ArticleServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Tag("integration_article")

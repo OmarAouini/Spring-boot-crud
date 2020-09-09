@@ -7,6 +7,8 @@ import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.dto.ArticleFilter;
 import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import com.aouin.springbootcrud.service.mapper.ArticleMapper;
+import com.aouin.springbootcrud.service.utils.ErrMsg;
+import com.aouin.springbootcrud.service.utils.TranslationService;
 import com.aouin.springbootcrud.service.utils.validators.ArticleValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
@@ -23,15 +25,22 @@ public class ArticleServiceImpl implements ArticleService {
 
     private ArticleMapper articleMapper;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper) {
+    private TranslationService translationService;
+
+    private ArticleValidator articleValidator;
+
+    public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper, TranslationService translationService, ArticleValidator articleValidator) {
         this.articleRepository = articleRepository;
         this.articleMapper = articleMapper;
+        this.translationService = translationService;
+        this.articleValidator = articleValidator;
     }
 
     @Override
     public ArticleDTO findArticleById(Integer id) throws ServiceException {
         try {
-            return this.articleMapper.toDTO(this.articleRepository.findById(id).orElseThrow(() -> new Exception("id dell'articolo non trovato!")));
+            return this.articleMapper.toDTO(this.articleRepository.findById(id)
+                    .orElseThrow(() -> new ServiceException(this.translationService.getMsg(ErrMsg.A002, ErrMsg.IT))));
         } catch (Exception e) {
             throw new ServiceException(e.getLocalizedMessage());
         }
@@ -88,7 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
         try {
             Article toSave = this.articleMapper.toEntity(articleDTO);
             // validation
-            ArticleValidator.validateCategory(toSave);
+            this.articleValidator.validateCategory(toSave);
             // other validations TODO
             //
             //saving

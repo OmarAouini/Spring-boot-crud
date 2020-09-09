@@ -15,3 +15,6 @@ technologies used:
 -Swagger2<br>
 -Jacoco (code coverage)<br>
 
+todos:
+-write tests
+-add authentication

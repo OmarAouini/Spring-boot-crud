@@ -22,6 +22,10 @@ public class User {
     private String username;
     private String password;
     private List<UserAddress> userAddresses;
-    private String role;
+    private List<String> roles;
     private boolean enabled;
+
+    public boolean getEnabled() {
+        return this.enabled;
+    }
 }

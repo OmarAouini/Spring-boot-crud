@@ -44,7 +44,7 @@ public class TranslationService {
         Map<String, String> message4 = new HashMap<>();
         message4.put(ErrMsg.IT, "Id utente non trovato");
         message4.put(ErrMsg.EN, "user Id not found");
-        errors.put(ErrMsg.A003, message4);
+        errors.put(ErrMsg.U001, message4);
 
         return errors;
     }

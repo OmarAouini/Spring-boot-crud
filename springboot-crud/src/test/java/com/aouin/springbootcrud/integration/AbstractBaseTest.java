@@ -9,15 +9,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.STRICT_STUBS)
 @SpringBootTest
 public abstract class AbstractBaseTest {
 
-    @Mock(answer = Answers.RETURNS_SMART_NULLS)
+    @MockBean(answer = Answers.RETURNS_SMART_NULLS)
     private UserRepository userRepository;
 
-    @Mock(answer = Answers.RETURNS_SMART_NULLS)
+    @MockBean(answer = Answers.RETURNS_SMART_NULLS)
     private ArticleRepository articleRepository;
 }

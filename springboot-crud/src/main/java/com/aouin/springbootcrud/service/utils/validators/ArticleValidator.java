@@ -3,7 +3,6 @@ package com.aouin.springbootcrud.service.utils.validators;
 import com.aouin.springbootcrud.model.Article;
 import com.aouin.springbootcrud.model.enums.Category;
 import com.aouin.springbootcrud.service.exceptions.ArticleValidationException;
-import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
 import org.springframework.stereotype.Component;
@@ -21,9 +20,9 @@ public class ArticleValidator {
 
     public void validateArticle(Article article) throws ArticleValidationException {
         try {
-            validateArticleName(article);
-            validateArticlePrice(article);
-            validateArticleCategory(article);
+            this.validateArticleName(article);
+            this.validateArticlePrice(article);
+            this.validateArticleCategory(article);
         } catch (ArticleValidationException e) {
             throw new ArticleValidationException(e.getLocalizedMessage());
         }

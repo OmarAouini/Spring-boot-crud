@@ -1,7 +1,6 @@
 package com.aouin.springbootcrud.service.impl;
 
 import com.aouin.springbootcrud.model.Article;
-import com.aouin.springbootcrud.model.enums.Category;
 import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
@@ -12,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,9 +63,9 @@ public class ArticleServiceImpl implements ArticleService {
 
             // min & max price filter
             if (articleFilter.getMinPrice() != null)
-                result.stream().filter(a -> a.getPrice() > articleFilter.getMinPrice()).collect(Collectors.toList());
+                result = result.stream().filter(a -> a.getPrice() > articleFilter.getMinPrice()).collect(Collectors.toList());
             if (articleFilter.getMaxPrice() != null)
-                result.stream().filter(a -> a.getPrice() < articleFilter.getMaxPrice()).collect(Collectors.toList());
+                result = result.stream().filter(a -> a.getPrice() < articleFilter.getMaxPrice()).collect(Collectors.toList());
 
             return result.stream().map(articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
@@ -90,6 +88,8 @@ public class ArticleServiceImpl implements ArticleService {
             Article toSave = this.articleMapper.toEntity(articleDTO);
             // validation
             ArticleValidator.validateCategory(toSave);
+            // other validations TODO
+            //
             //saving
             return this.articleMapper.toDTO(this.articleRepository.save(toSave));
         } catch (Exception e) {

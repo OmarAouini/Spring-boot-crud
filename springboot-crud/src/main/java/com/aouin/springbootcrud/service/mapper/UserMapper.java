@@ -6,7 +6,7 @@ import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.dto.UserDTO;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
 
     User toEntity(UserDTO userDTO);

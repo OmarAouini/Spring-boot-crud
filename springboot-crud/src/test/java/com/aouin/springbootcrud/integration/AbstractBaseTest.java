@@ -3,6 +3,7 @@ package com.aouin.springbootcrud.integration;
 import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.repository.UserRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
@@ -14,9 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public abstract class AbstractBaseTest {
 
-    @Mock
+    @Mock(answer = Answers.RETURNS_SMART_NULLS)
     private UserRepository userRepository;
 
-    @Mock
+    @Mock(answer = Answers.RETURNS_SMART_NULLS)
     private ArticleRepository articleRepository;
 }

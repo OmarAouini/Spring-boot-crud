@@ -40,7 +40,7 @@ public class ArticleValidator {
     }
 
     private void validateArticleName(Article article) throws ArticleValidationException {
-        if (article.getName() == null || article.getName().equalsIgnoreCase(""))
+        if (article.getName() == null || article.getName().isEmpty())
             throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A005, ErrMsg.IT));
     }
 }

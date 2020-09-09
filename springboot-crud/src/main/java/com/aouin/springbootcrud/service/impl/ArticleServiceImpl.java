@@ -1,6 +1,7 @@
 package com.aouin.springbootcrud.service.impl;
 
 import com.aouin.springbootcrud.model.Article;
+import com.aouin.springbootcrud.model.enums.Category;
 import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

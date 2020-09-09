@@ -5,7 +5,7 @@ example Unit/integration test are included.<br>
 technologies used:
 
 -Spring boot<br>
--Spring security (with JWT)
+-Spring security (with JWT)<br>
 -Apache maven<br>
 -MongoDB<br>
 -Junit5<br>

@@ -36,7 +36,7 @@ public class ArticleValidator {
                     throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
             }
         } else
-            throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
+            throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A006, ErrMsg.IT));
     }
 
     private void validateArticlePrice(Article article) throws ArticleValidationException {

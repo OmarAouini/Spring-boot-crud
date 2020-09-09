@@ -58,6 +58,12 @@ public class TranslationService {
         message6.put(ErrMsg.EN, "name field is mandatory");
         errors.put(ErrMsg.A005, message6);
 
+        //A006
+        Map<String, String> message7 = new HashMap<>();
+        message7.put(ErrMsg.IT, "categoria obbligatoria");
+        message7.put(ErrMsg.EN, "category field is mandatory");
+        errors.put(ErrMsg.A006, message7);
+
         return errors;
     }
 }

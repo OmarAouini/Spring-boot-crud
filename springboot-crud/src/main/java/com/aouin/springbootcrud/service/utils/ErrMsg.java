@@ -8,6 +8,7 @@ public interface ErrMsg {
     String A003 = "A003"; // categoria sconosciuta
     String A004 = "A004"; // prezzo minore di zero
     String A005 = "A005"; // campo nome obbligatorio
+    String A006 = "A006"; // campo categorie obbligatorio
 
     //USER ERROR MESSAGES
     String U001 = "U001"; // Id utente non trovato

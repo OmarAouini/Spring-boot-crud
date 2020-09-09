@@ -97,9 +97,7 @@ public class ArticleServiceImpl implements ArticleService {
         try {
             Article toSave = this.articleMapper.toEntity(articleDTO);
             // validation
-            this.articleValidator.validateCategory(toSave);
-            // other validations TODO
-            //
+            this.articleValidator.validateArticle(toSave);
             //saving
             return this.articleMapper.toDTO(this.articleRepository.save(toSave));
         } catch (Exception e) {

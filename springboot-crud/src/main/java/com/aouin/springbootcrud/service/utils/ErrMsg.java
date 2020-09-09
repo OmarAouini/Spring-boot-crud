@@ -6,6 +6,8 @@ public interface ErrMsg {
     String A001 = "A001";
     String A002 = "A002";
     String A003 = "A003";
+    String A004 = "A004";
+    String A005 = "A005";
 
     //USER ERROR MESSAGES
     String U001 = "U001";

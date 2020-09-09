@@ -18,12 +18,28 @@ public class ArticleValidator {
         this.translationService = translationService;
     }
 
-    public void validateCategory(Article article) throws ServiceException {
+    public void validateArticle(Article article) throws ServiceException {
         try {
-            if (Arrays.stream(Category.values()).noneMatch(category -> category.toString().equalsIgnoreCase(article.getCategory())))
-                throw new ServiceException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
+            validateArticleName(article);
+            validateArticlePrice(article);
+            validateArticleCategory(article);
         } catch (Exception e) {
             throw new ServiceException(e.getLocalizedMessage());
         }
+    }
+
+    private void validateArticleCategory(Article article) throws ServiceException {
+        if (article.getCategory() != null && Arrays.stream(Category.values()).noneMatch(category -> category.toString().equalsIgnoreCase(article.getCategory())))
+            throw new ServiceException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
+    }
+
+    private void validateArticlePrice(Article article) throws ServiceException {
+        if (article.getPrice() != null && article.getPrice() < 0.0F)
+            throw new ServiceException(this.translationService.getMsg(ErrMsg.A004, ErrMsg.IT));
+    }
+
+    private void validateArticleName(Article article) throws ServiceException {
+        if (article.getName() == null || article.getName().equalsIgnoreCase(""))
+            throw new ServiceException(this.translationService.getMsg(ErrMsg.A005, ErrMsg.IT));
     }
 }

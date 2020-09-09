@@ -46,6 +46,18 @@ public class TranslationService {
         message4.put(ErrMsg.EN, "user Id not found");
         errors.put(ErrMsg.U001, message4);
 
+        //A004
+        Map<String, String> message5 = new HashMap<>();
+        message5.put(ErrMsg.IT, "prezzo minore di zero");
+        message5.put(ErrMsg.EN, "price is negative number");
+        errors.put(ErrMsg.A004, message5);
+
+        //A005
+        Map<String, String> message6 = new HashMap<>();
+        message6.put(ErrMsg.IT, "campo nome obbligatorio");
+        message6.put(ErrMsg.EN, "name field is mandatory");
+        errors.put(ErrMsg.A005, message6);
+
         return errors;
     }
 }

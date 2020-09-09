@@ -5,6 +5,7 @@ import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.service.ArticleService;
 import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.dto.ArticleFilter;
+import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import com.aouin.springbootcrud.service.mapper.ArticleMapper;
 import com.aouin.springbootcrud.service.utils.validators.ArticleValidator;
 import lombok.extern.slf4j.Slf4j;
@@ -28,25 +29,25 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public ArticleDTO findArticleById(Integer id) throws Exception {
+    public ArticleDTO findArticleById(Integer id) throws ServiceException {
         try {
             return this.articleMapper.toDTO(this.articleRepository.findById(id).orElseThrow(() -> new Exception("id dell'articolo non trovato!")));
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 
     @Override
-    public List<ArticleDTO> getAllArticles() throws Exception {
+    public List<ArticleDTO> getAllArticles() throws ServiceException {
         try {
             return this.articleRepository.findAll().stream().map(articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 
     @Override
-    public List<ArticleDTO> getArticlesByFilter(ArticleFilter articleFilter) throws Exception {
+    public List<ArticleDTO> getArticlesByFilter(ArticleFilter articleFilter) throws ServiceException {
         try {
             Article example = new Article();
 
@@ -69,21 +70,21 @@ public class ArticleServiceImpl implements ArticleService {
 
             return result.stream().map(articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 
     @Override
-    public List<ArticleDTO> getArticlesByCategory(String category) throws Exception {
+    public List<ArticleDTO> getArticlesByCategory(String category) throws ServiceException {
         try {
             return this.articleRepository.findByCategory(category).stream().map(this.articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 
     @Override
-    public ArticleDTO addArticle(ArticleDTO articleDTO) throws Exception {
+    public ArticleDTO addArticle(ArticleDTO articleDTO) throws ServiceException {
         try {
             Article toSave = this.articleMapper.toEntity(articleDTO);
             // validation
@@ -93,16 +94,16 @@ public class ArticleServiceImpl implements ArticleService {
             //saving
             return this.articleMapper.toDTO(this.articleRepository.save(toSave));
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 
     @Override
-    public void deleteArticle(Integer id) throws Exception {
+    public void deleteArticle(Integer id) throws ServiceException {
         try {
             this.articleRepository.deleteById(id);
         } catch (Exception e) {
-            throw new Exception(e.getLocalizedMessage());
+            throw new ServiceException(e.getLocalizedMessage());
         }
     }
 }

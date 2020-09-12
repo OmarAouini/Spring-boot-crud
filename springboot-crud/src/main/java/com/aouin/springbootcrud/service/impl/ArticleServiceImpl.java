@@ -81,9 +81,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDTO> getArticlesByCategory(String category) throws ServiceException {
+    public List<ArticleDTO> getArticlesByCategory(List<String> categories) throws ServiceException {
         try {
-            return this.articleRepository.findByCategory(category).stream().map(this.articleMapper::toDTO).collect(Collectors.toList());
+            return this.articleRepository.findByCategoriesIn(categories).stream().map(this.articleMapper::toDTO).collect(Collectors.toList());
         } catch (Exception e) {
             throw new ServiceException(e.getLocalizedMessage());
         }

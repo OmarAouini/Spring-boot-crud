@@ -32,7 +32,7 @@ public class ArticleValidator {
 
         if (article.getCategories() != null && !article.getCategories().isEmpty()) {
             for (String category : article.getCategories()) {
-                if (Arrays.stream(Category.values()).noneMatch(c -> c.toString().equalsIgnoreCase(category)))
+                if (Arrays.stream(Category.values()).noneMatch(c -> c.toString().equalsIgnoreCase(category.toUpperCase())))
                     throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A003, ErrMsg.IT));
             }
         } else

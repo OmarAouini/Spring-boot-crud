@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ArticleRepository extends MongoRepository<Article, Integer> {
-    List<Article> findByCategory(String category);
+    List<Article> findByCategoriesIn(List<String> categories);
 }

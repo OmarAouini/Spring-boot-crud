@@ -36,13 +36,17 @@ public class ArticleController {
     }
 
     @GetMapping("/category")
-    public ResponseEntity<List<ArticleDTO>> getArticlesByCategory(@RequestParam String category) throws ServiceException {
-        return new ResponseEntity<>(this.articleService.getArticlesByCategory(category), HttpStatus.OK);
+    public ResponseEntity<List<ArticleDTO>> getArticlesByCategory(@RequestParam List<String> categories) throws ServiceException {
+        return new ResponseEntity<>(this.articleService.getArticlesByCategory(categories), HttpStatus.OK);
     }
 
     @PostMapping("/add")
     public ResponseEntity<ArticleDTO> addArticle(@RequestBody ArticleDTO articleDTO) throws ServiceException {
-        return new ResponseEntity<>(this.articleService.addArticle(articleDTO), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity<>(this.articleService.addArticle(articleDTO), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/delete")

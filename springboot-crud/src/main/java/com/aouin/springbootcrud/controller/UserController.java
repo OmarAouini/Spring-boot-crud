@@ -5,10 +5,7 @@ import com.aouin.springbootcrud.service.dto.UserDTO;
 import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
 @RestController
@@ -33,5 +30,10 @@ public class UserController {
     @GetMapping("/is-email-used")
     public ResponseEntity<Boolean> isEmailAlreadyUsed(@RequestParam String email) throws ServiceException {
         return new ResponseEntity<>(this.userService.isEmailAlreadyUsed(email), HttpStatus.OK);
+    }
+
+    @GetMapping("/add")
+    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO user) {
+        return new ResponseEntity<>(this.userService.addUser(user), HttpStatus.CREATED);
     }
 }

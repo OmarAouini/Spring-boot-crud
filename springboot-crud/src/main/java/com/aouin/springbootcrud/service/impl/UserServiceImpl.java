@@ -8,6 +8,7 @@ import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import com.aouin.springbootcrud.service.mapper.UserMapper;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
+import com.aouin.springbootcrud.service.utils.validators.UserValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final TranslationService translationService;
+    private UserValidator userValidator;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, TranslationService translationService) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, TranslationService translationService, UserValidator userValidator) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.translationService = translationService;
+        this.userValidator = userValidator;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isEmailAlreadyUsed(String email) throws ServiceException {
         try {
-        return this.userRepository.exists(Example.of(User.builder().email(email).build()));
+            return this.userRepository.exists(Example.of(User.builder().email(email).build()));
         } catch (Exception e) {
             throw new ServiceException(e.getLocalizedMessage());
         }
@@ -47,8 +50,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isUsernameAlreadyUsed(String username) throws ServiceException {
         try {
-        return this.userRepository.exists(Example.of(User.builder().username(username).build()));
+            return this.userRepository.exists(Example.of(User.builder().username(username).build()));
         } catch (Exception e) {
-            throw new ServiceException(e.getLocalizedMessage());        }
+            throw new ServiceException(e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public UserDTO addUser(UserDTO userDTO) throws ServiceException {
+        try {
+            User user = this.userMapper.toEntity(userDTO);
+            //validation
+            this.userValidator.validateUser(user);
+            //saving
+            return this.userMapper.toDTO(this.userRepository.save(user));
+        } catch (Exception e) {
+            throw new ServiceException(e.getLocalizedMessage());
+        }
     }
 }

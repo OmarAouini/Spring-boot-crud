@@ -117,7 +117,7 @@ public class TranslationService {
         errors.put(ErrMsg.U005, message15);
 
 
-        //U005
+        //C001
         Map<String, String> message16 = new HashMap<>();
         message16.put(ErrMsg.IT, "carrello con id specificato non trovato");
         message16.put(ErrMsg.EN, "cart not found with the specified id");

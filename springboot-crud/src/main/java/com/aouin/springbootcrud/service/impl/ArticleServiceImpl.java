@@ -93,6 +93,10 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDTO addArticle(ArticleDTO articleDTO) throws ServiceException {
         try {
             Article toSave = this.articleMapper.toEntity(articleDTO);
+
+            //cleanup
+            toSave.getCategories().stream().distinct().collect(Collectors.toList());
+
             // validation
             this.articleValidator.validateArticle(toSave);
             //saving

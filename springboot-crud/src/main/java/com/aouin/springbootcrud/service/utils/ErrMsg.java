@@ -9,6 +9,9 @@ public interface ErrMsg {
     String A004 = "A004"; // prezzo minore di zero
     String A005 = "A005"; // campo nome obbligatorio
     String A006 = "A006"; // campo categorie obbligatorio
+    String A007 = "A007"; // stock quantity negativo
+    String A008 = "A008"; // shipping details con valori negativi
+    String A009 = "A009"; // manufacture details con valori negativi
 
     //USER ERROR MESSAGES
     String U001 = "U001"; // Id utente non trovato

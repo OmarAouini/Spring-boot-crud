@@ -74,6 +74,24 @@ public class TranslationService {
         message8.put(ErrMsg.EN, "checkout not found");
         errors.put(ErrMsg.C001, message8);
 
+        //A007
+        Map<String, String> message9 = new HashMap<>();
+        message9.put(ErrMsg.IT, "quantità stock non valida");
+        message9.put(ErrMsg.EN, "invalid stock quantity");
+        errors.put(ErrMsg.A007, message9);
+
+        //A008
+        Map<String, String> message10 = new HashMap<>();
+        message10.put(ErrMsg.IT, "dettagli spedizione con valori non validi");
+        message10.put(ErrMsg.EN, "invalid shipping details values");
+        errors.put(ErrMsg.A008, message10);
+
+        //A009
+        Map<String, String> message11 = new HashMap<>();
+        message11.put(ErrMsg.IT, "dettagli produttore con valori non validi");
+        message11.put(ErrMsg.EN, "invalid manufacture details values");
+        errors.put(ErrMsg.A009, message11);
+
         return errors;
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -23,5 +23,15 @@ public class UserController {
     @GetMapping("/id")
     public ResponseEntity<UserDTO> getUserById(@RequestParam Integer id) throws ServiceException {
         return new ResponseEntity<>(this.userService.findUserById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/is-username-used")
+    public ResponseEntity<Boolean> isUsernameAlreadyUsed(@RequestParam String username) throws ServiceException {
+        return new ResponseEntity<>(this.userService.isUsernameAlreadyUsed(username), HttpStatus.OK);
+    }
+
+    @GetMapping("/is-email-used")
+    public ResponseEntity<Boolean> isEmailAlreadyUsed(@RequestParam String email) throws ServiceException {
+        return new ResponseEntity<>(this.userService.isEmailAlreadyUsed(email), HttpStatus.OK);
     }
 }

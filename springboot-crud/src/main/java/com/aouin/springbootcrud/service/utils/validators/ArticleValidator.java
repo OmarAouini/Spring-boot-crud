@@ -12,7 +12,7 @@ import java.util.Arrays;
 @Component
 public class ArticleValidator {
 
-    private TranslationService translationService;
+    private final TranslationService translationService;
 
     public ArticleValidator(TranslationService translationService) {
         this.translationService = translationService;

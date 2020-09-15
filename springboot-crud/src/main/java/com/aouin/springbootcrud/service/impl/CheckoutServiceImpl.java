@@ -1,8 +1,6 @@
 package com.aouin.springbootcrud.service.impl;
 
-import com.aouin.springbootcrud.repository.ArticleRepository;
 import com.aouin.springbootcrud.repository.CheckoutRepository;
-import com.aouin.springbootcrud.repository.UserRepository;
 import com.aouin.springbootcrud.service.CheckoutService;
 import com.aouin.springbootcrud.service.dto.CheckoutDTO;
 import com.aouin.springbootcrud.service.exceptions.ServiceException;
@@ -19,15 +17,11 @@ import java.util.stream.Collectors;
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
 
-    private UserRepository userRepository;
-    private ArticleRepository articleRepository;
-    private CheckoutMapper checkoutMapper;
-    private CheckoutRepository checkoutRepository;
-    private TranslationService translationService;
+    private final CheckoutMapper checkoutMapper;
+    private final CheckoutRepository checkoutRepository;
+    private final TranslationService translationService;
 
-    public CheckoutServiceImpl(UserRepository userRepository, ArticleRepository articleRepository, CheckoutMapper checkoutMapper, CheckoutRepository checkoutRepository, TranslationService translationService) {
-        this.userRepository = userRepository;
-        this.articleRepository = articleRepository;
+    public CheckoutServiceImpl(CheckoutMapper checkoutMapper, CheckoutRepository checkoutRepository, TranslationService translationService) {
         this.checkoutRepository = checkoutRepository;
         this.checkoutMapper = checkoutMapper;
         this.translationService = translationService;

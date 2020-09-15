@@ -92,6 +92,36 @@ public class TranslationService {
         message11.put(ErrMsg.EN, "invalid manufacture details values");
         errors.put(ErrMsg.A009, message11);
 
+        //U002
+        Map<String, String> message12 = new HashMap<>();
+        message12.put(ErrMsg.IT, "ruolo sconosciuto");
+        message12.put(ErrMsg.EN, "unknown role");
+        errors.put(ErrMsg.U002, message12);
+
+        //U003
+        Map<String, String> message13 = new HashMap<>();
+        message13.put(ErrMsg.IT, " uno o più campi degli indirizzi non è valido");
+        message13.put(ErrMsg.EN, "one or more addresses field is not valid");
+        errors.put(ErrMsg.U003, message13);
+
+        //U004
+        Map<String, String> message14 = new HashMap<>();
+        message14.put(ErrMsg.IT, " password invalida, caratteri richiesti mancanti");
+        message14.put(ErrMsg.EN, "invalid password,  one or more special characters missing");
+        errors.put(ErrMsg.U004, message14);
+
+        //U005
+        Map<String, String> message15 = new HashMap<>();
+        message15.put(ErrMsg.IT, "password vuota o nulla o minore di 8 caratteri");
+        message15.put(ErrMsg.EN, "empty password and/or length is less than 8");
+        errors.put(ErrMsg.U005, message15);
+
+
+        //U005
+        Map<String, String> message16 = new HashMap<>();
+        message16.put(ErrMsg.IT, "carrello con id specificato non trovato");
+        message16.put(ErrMsg.EN, "cart not found with the specified id");
+        errors.put(ErrMsg.C001, message16);
         return errors;
     }
 }

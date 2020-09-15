@@ -21,7 +21,7 @@ public interface ErrMsg {
     String U005 = "U005"; // password vuota o nulla o minore di 8 caratteri
 
     //CHECKOUTS ERROR MESSAGES
-    String C001 = "C001";
+    String C001 = "C001"; // carrello con id specificato non trovato
     //MISC
     String IT = "it";
     String EN = "en";

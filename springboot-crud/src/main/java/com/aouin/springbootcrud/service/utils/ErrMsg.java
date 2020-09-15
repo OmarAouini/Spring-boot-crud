@@ -15,6 +15,10 @@ public interface ErrMsg {
 
     //USER ERROR MESSAGES
     String U001 = "U001"; // Id utente non trovato
+    String U002 = "U002"; // ruolo sconosciuto
+    String U003 = "U003"; // uno o più campi degli indirizzi non è valido
+    String U004 = "U004"; // password invalida, caratteri richiesti mancanti
+    String U005 = "U005"; // password vuota o nulla o minore di 8 caratteri
 
     //CHECKOUTS ERROR MESSAGES
     String C001 = "C001";

@@ -1,7 +1,6 @@
 package com.aouin.springbootcrud.service.utils.validators;
 
 import com.aouin.springbootcrud.model.User;
-import com.aouin.springbootcrud.model.UserAddress;
 import com.aouin.springbootcrud.model.enums.UserRole;
 import com.aouin.springbootcrud.service.exceptions.UserValidationException;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
@@ -53,7 +52,7 @@ public class UserValidator {
 
             Pattern letter = Pattern.compile("[a-zA-z]");
             Pattern digit = Pattern.compile("[0-9]");
-            Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
+            Pattern special = Pattern.compile("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
 
             Matcher hasLetter = letter.matcher(pswd);
             Matcher hasDigit = digit.matcher(pswd);

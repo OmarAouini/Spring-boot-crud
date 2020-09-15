@@ -13,6 +13,8 @@ public interface ErrMsg {
     //USER ERROR MESSAGES
     String U001 = "U001"; // Id utente non trovato
 
+    //CHECKOUTS ERROR MESSAGES
+    String C001 = "C001";
     //MISC
     String IT = "it";
     String EN = "en";

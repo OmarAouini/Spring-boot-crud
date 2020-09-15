@@ -67,6 +67,13 @@ public class TranslationService {
         message7.put(ErrMsg.EN, "category field is mandatory");
         errors.put(ErrMsg.A006, message7);
 
+
+        //C001
+        Map<String, String> message8 = new HashMap<>();
+        message8.put(ErrMsg.IT, "carrello non trovato");
+        message8.put(ErrMsg.EN, "checkout not found");
+        errors.put(ErrMsg.C001, message8);
+
         return errors;
     }
 }

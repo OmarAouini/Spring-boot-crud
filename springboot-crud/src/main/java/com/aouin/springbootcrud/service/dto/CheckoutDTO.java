@@ -1,12 +1,12 @@
-package com.aouin.springbootcrud.model;
+package com.aouin.springbootcrud.service.dto;
 
-import io.swagger.models.auth.In;
+import com.aouin.springbootcrud.model.Article;
+import com.aouin.springbootcrud.model.Payment;
+import com.aouin.springbootcrud.model.Shipping;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,10 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collection = "checkouts")
-public class Checkout {
+public class CheckoutDTO {
 
-    @Id
     private Integer transactionId;
     private Integer userId;
     private LocalDateTime date;

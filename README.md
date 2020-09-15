@@ -19,4 +19,4 @@ technologies used:
 
 todos:<br>
 -write tests<br>
-<strike>-add authentication</strike><br>
+-add authentication<br>

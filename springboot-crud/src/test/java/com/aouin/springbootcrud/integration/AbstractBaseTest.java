@@ -1,6 +1,7 @@
 package com.aouin.springbootcrud.integration;
 
 import com.aouin.springbootcrud.repository.ArticleRepository;
+import com.aouin.springbootcrud.repository.CheckoutRepository;
 import com.aouin.springbootcrud.repository.UserRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Answers;
@@ -20,4 +21,7 @@ public abstract class AbstractBaseTest {
 
     @MockBean(answer = Answers.RETURNS_SMART_NULLS)
     private ArticleRepository articleRepository;
+
+    @MockBean(answer = Answers.RETURNS_SMART_NULLS)
+    private CheckoutRepository checkoutRepository;
 }

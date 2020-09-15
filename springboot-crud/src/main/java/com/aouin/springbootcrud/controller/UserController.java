@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/add")
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO user) {
+    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO user) throws ServiceException {
         return new ResponseEntity<>(this.userService.addUser(user), HttpStatus.CREATED);
     }
 }

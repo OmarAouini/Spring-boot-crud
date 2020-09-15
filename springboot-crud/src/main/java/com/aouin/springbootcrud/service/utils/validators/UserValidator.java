@@ -59,7 +59,7 @@ public class UserValidator {
             Matcher hasDigit = digit.matcher(pswd);
             Matcher hasSpecial = special.matcher(pswd);
 
-            if (!hasLetter.find() && hasDigit.find() && hasSpecial.find())
+            if (!hasLetter.find() || !hasDigit.find() || !hasSpecial.find())
                 throw new UserValidationException(this.translationService.getMsg(ErrMsg.U004, ErrMsg.IT));
 
         } else

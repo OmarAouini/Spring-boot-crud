@@ -1,5 +1,6 @@
 package com.aouin.springbootcrud.service.impl;
 
+import com.aouin.springbootcrud.model.User;
 import com.aouin.springbootcrud.repository.UserRepository;
 import com.aouin.springbootcrud.service.UserService;
 import com.aouin.springbootcrud.service.dto.UserDTO;
@@ -8,6 +9,7 @@ import com.aouin.springbootcrud.service.mapper.UserMapper;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -31,5 +33,22 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             throw new ServiceException(e.getLocalizedMessage());
         }
+    }
+
+    @Override
+    public boolean isEmailAlreadyUsed(String email) throws ServiceException {
+        try {
+        return this.userRepository.exists(Example.of(User.builder().email(email).build()));
+        } catch (Exception e) {
+            throw new ServiceException(e.getLocalizedMessage());
+        }
+    }
+
+    @Override
+    public boolean isUsernameAlreadyUsed(String username) throws ServiceException {
+        try {
+        return this.userRepository.exists(Example.of(User.builder().username(username).build()));
+        } catch (Exception e) {
+            throw new ServiceException(e.getLocalizedMessage());        }
     }
 }

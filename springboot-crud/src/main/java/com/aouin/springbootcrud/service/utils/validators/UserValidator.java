@@ -65,9 +65,22 @@ public class UserValidator {
             throw new UserValidationException(this.translationService.getMsg(ErrMsg.U005, ErrMsg.IT));
     }
 
-    private void validateEmail(User user) {
+    private void validateEmail(User user) throws UserValidationException {
+        if (user.getEmail() != null && !user.getEmail().isEmpty()) {
+
+            String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(user.getEmail());
+
+            if (!matcher.matches()) {
+                throw new UserValidationException(this.translationService.getMsg(ErrMsg.U007, ErrMsg.IT));
+            }
+        } else
+            throw new UserValidationException(this.translationService.getMsg(ErrMsg.U006, ErrMsg.IT));
     }
 
-    private void validateUsername(User user) {
+    private void validateUsername(User user) throws UserValidationException {
+        if (user.getUsername() == null || user.getUsername().isEmpty() || user.getUsername().length() > 16)
+            throw new UserValidationException(this.translationService.getMsg(ErrMsg.U008, ErrMsg.IT));
     }
 }

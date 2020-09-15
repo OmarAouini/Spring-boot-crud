@@ -19,9 +19,13 @@ public interface ErrMsg {
     String U003 = "U003"; // uno o più campi degli indirizzi non è valido
     String U004 = "U004"; // password invalida, caratteri richiesti mancanti
     String U005 = "U005"; // password vuota o nulla o minore di 8 caratteri
+    String U006 = "U006"; // campo email vuoto
+    String U007 = "U007"; // pattern email non valido
+    String U008 = "U008"; // username non valido
 
     //CHECKOUTS ERROR MESSAGES
     String C001 = "C001"; // carrello con id specificato non trovato
+
     //MISC
     String IT = "it";
     String EN = "en";

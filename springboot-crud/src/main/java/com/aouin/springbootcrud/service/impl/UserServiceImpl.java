@@ -5,6 +5,7 @@ import com.aouin.springbootcrud.repository.UserRepository;
 import com.aouin.springbootcrud.service.UserService;
 import com.aouin.springbootcrud.service.dto.UserDTO;
 import com.aouin.springbootcrud.service.exceptions.ServiceException;
+import com.aouin.springbootcrud.service.exceptions.UserValidationException;
 import com.aouin.springbootcrud.service.mapper.UserMapper;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
@@ -64,7 +65,7 @@ public class UserServiceImpl implements UserService {
             this.userValidator.validateUser(user);
             //saving
             return this.userMapper.toDTO(this.userRepository.save(user));
-        } catch (Exception e) {
+        } catch (Exception | UserValidationException e) {
             throw new ServiceException(e.getLocalizedMessage());
         }
     }

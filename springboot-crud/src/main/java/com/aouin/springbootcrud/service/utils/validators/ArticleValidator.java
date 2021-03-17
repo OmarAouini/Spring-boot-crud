@@ -6,6 +6,7 @@ import com.aouin.springbootcrud.service.exceptions.ArticleValidationException;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
 import org.springframework.stereotype.Component;
+import static com.aouin.springbootcrud.service.utils.Utils.*;
 
 import java.util.Arrays;
 
@@ -50,7 +51,7 @@ public class ArticleValidator {
     }
 
     private void validateArticleName(Article article) throws ArticleValidationException {
-        if (article.getName() == null || article.getName().isEmpty())
+        if (isNullOrEmptyString(article.getName()))
             throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A005, ErrMsg.IT));
     }
 
@@ -63,9 +64,10 @@ public class ArticleValidator {
     }
 
     private void validateManufactureDetails(Article article) throws ArticleValidationException {
-        if (article.getManufactureDetails().getManufactorName() == null || article.getManufactureDetails().getManufactorName().isEmpty() ||
-                article.getManufactureDetails().getModelNumber() == null || article.getManufactureDetails().getModelNumber().isEmpty() ||
-                article.getManufactureDetails().getReleaseDate() == null || article.getManufactureDetails().getReleaseDate().isEmpty())
+        if (isNullOrEmptyString(article.getManufactureDetails().getManufactorName()) ||
+            isNullOrEmptyString(article.getManufactureDetails().getModelNumber()) ||
+            isNullOrEmptyString(article.getManufactureDetails().getReleaseDate())
+            )
             throw new ArticleValidationException(this.translationService.getMsg(ErrMsg.A009, ErrMsg.IT));
     }
 

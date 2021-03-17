@@ -1,10 +1,9 @@
 package com.aouin.springbootcrud.service;
 
-import com.aouin.springbootcrud.model.Checkout;
+import java.util.List;
+
 import com.aouin.springbootcrud.service.dto.CheckoutDTO;
 import com.aouin.springbootcrud.service.exceptions.ServiceException;
-
-import java.util.List;
 
 public interface CheckoutService {
 

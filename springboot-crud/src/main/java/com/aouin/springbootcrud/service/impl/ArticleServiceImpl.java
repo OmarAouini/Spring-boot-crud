@@ -71,6 +71,7 @@ public class ArticleServiceImpl implements ArticleService {
             List<Article> result = this.articleRepository.findAll(Example.of(example));
 
             // min & max price filter
+            //TODO optimize
             if (articleFilter.getMinPrice() != null)
                 result = result.stream().filter(a -> a.getPrice() > articleFilter.getMinPrice()).collect(Collectors.toList());
             if (articleFilter.getMaxPrice() != null)

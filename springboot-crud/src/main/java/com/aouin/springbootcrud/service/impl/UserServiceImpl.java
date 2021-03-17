@@ -10,9 +10,11 @@ import com.aouin.springbootcrud.service.mapper.UserMapper;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
 import com.aouin.springbootcrud.service.utils.validators.UserValidator;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

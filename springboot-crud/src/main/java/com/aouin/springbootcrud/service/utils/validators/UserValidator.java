@@ -6,6 +6,7 @@ import com.aouin.springbootcrud.service.exceptions.UserValidationException;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
 import org.springframework.stereotype.Component;
+import static com.aouin.springbootcrud.service.utils.Utils.*;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -13,7 +14,6 @@ import java.util.regex.Pattern;
 
 @Component
 public class UserValidator {
-
 
     private final TranslationService translationService;
 
@@ -35,12 +35,11 @@ public class UserValidator {
     }
 
     private void validateAddresses(User user) throws UserValidationException {
-        if (user.getUserAddresses().stream().anyMatch(address -> address == null ||
-                address.getAddress() == null || address.getAddress().isEmpty() ||
-                address.getCity() == null || address.getCity().isEmpty() ||
-                address.getCountry() == null || address.getCountry().isEmpty() ||
-                address.getRegion() == null || address.getRegion().isEmpty() ||
-                address.getState() == null || address.getState().isEmpty()))
+        if (user.getUserAddresses().stream()
+                .anyMatch(address -> address == null || isNullOrEmptyString(address.getAddress())
+                        || isNullOrEmptyString(address.getCity()) || isNullOrEmptyString(address.getCountry())
+                        || isNullOrEmptyString(address.getRegion()) || isNullOrEmptyString(address.getState()))
+            )
             throw new UserValidationException(this.translationService.getMsg(ErrMsg.U003, ErrMsg.IT));
     }
 
@@ -48,7 +47,7 @@ public class UserValidator {
     private void validatePassword(User user) throws UserValidationException {
 
         String pswd = user.getPassword();
-        if (pswd != null && !pswd.isEmpty() && pswd.length() >= 8) {
+        if (!isNullOrEmptyString(pswd) && pswd.length() >= 8) {
 
             Pattern letter = Pattern.compile("[a-zA-z]");
             Pattern digit = Pattern.compile("[0-9]");
@@ -65,8 +64,9 @@ public class UserValidator {
             throw new UserValidationException(this.translationService.getMsg(ErrMsg.U005, ErrMsg.IT));
     }
 
+    // deve rispettare forma email
     private void validateEmail(User user) throws UserValidationException {
-        if (user.getEmail() != null && !user.getEmail().isEmpty()) {
+        if (!isNullOrEmptyString(user.getEmail())) {
 
             String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
             Pattern pattern = Pattern.compile(regex);
@@ -80,7 +80,8 @@ public class UserValidator {
     }
 
     private void validateUsername(User user) throws UserValidationException {
-        if (user.getUsername() == null || user.getUsername().isEmpty() || user.getUsername().length() > 16)
+        if (!isNullOrEmptyString(user.getUsername()) || user.getUsername().length() > 16)
             throw new UserValidationException(this.translationService.getMsg(ErrMsg.U008, ErrMsg.IT));
     }
+
 }

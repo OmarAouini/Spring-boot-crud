@@ -25,4 +25,5 @@ public class Article {
     private ManufactureDetails manufactureDetails;
     private ShippingDetails shippingDetails;
     private Integer stockQuantity;
+    private boolean isAvaliable;
 }

@@ -1,5 +1,8 @@
 package com.aouin.springbootcrud.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.aouin.springbootcrud.repository.CheckoutRepository;
 import com.aouin.springbootcrud.service.CheckoutService;
 import com.aouin.springbootcrud.service.dto.CheckoutDTO;
@@ -7,11 +10,10 @@ import com.aouin.springbootcrud.service.exceptions.ServiceException;
 import com.aouin.springbootcrud.service.mapper.CheckoutMapper;
 import com.aouin.springbootcrud.service.utils.ErrMsg;
 import com.aouin.springbootcrud.service.utils.TranslationService;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

@@ -1,14 +1,15 @@
 package com.aouin.springbootcrud.integration;
 
+import static com.google.common.truth.Truth.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.aouin.springbootcrud.service.impl.ArticleServiceImpl;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static com.google.common.truth.Truth.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("integration_article")
 public class ArticleServiceTest extends AbstractBaseTest {

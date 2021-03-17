@@ -24,8 +24,4 @@ public class User {
     private List<UserAddress> userAddresses;
     private List<String> roles;
     private boolean enabled;
-
-    public boolean getEnabled() {
-        return this.enabled;
-    }
 }

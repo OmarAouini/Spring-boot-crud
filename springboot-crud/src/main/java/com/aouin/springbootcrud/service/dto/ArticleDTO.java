@@ -23,4 +23,5 @@ public class ArticleDTO {
     private ManufactureDetails manufactureDetails;
     private ShippingDetails shippingDetails;
     private Integer stockQuantity;
+    private boolean isAvaliable;
 }

@@ -1,21 +1,42 @@
 package com.aouin.springbootcrud.integration;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
+import java.util.List;
+
+import com.aouin.springbootcrud.repository.ArticleRepository;
+import com.aouin.springbootcrud.service.dto.ArticleDTO;
 import com.aouin.springbootcrud.service.impl.ArticleServiceImpl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import lombok.SneakyThrows;
 
 @Tag("integration_article")
 public class ArticleServiceTest extends AbstractBaseTest {
 
     @Autowired
     private ArticleServiceImpl articleService;
+
+    @MockBean
+    private ArticleRepository articleRepository;
+
+    @BeforeEach
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @DisplayName("findByFilter")
     @Nested
@@ -95,6 +116,7 @@ public class ArticleServiceTest extends AbstractBaseTest {
 
         @Test
         void found() {
+            
             assertEquals(5, 3 + 2);
 
         }
@@ -110,6 +132,30 @@ public class ArticleServiceTest extends AbstractBaseTest {
             assertEquals(5, 3 + 2);
 
         }
+    }
+
+    @DisplayName("findAll")
+    @Nested
+    class findAllTest {
+
+        @Test
+        void found() {
+            assertTrue(true);
+        }
+
+        @Test
+        @SneakyThrows
+        void notFound() {
+            List lista = Collections.emptyList();
+            
+            Mockito.when(articleRepository.findAll()).thenReturn(lista);
+
+            List<ArticleDTO> result = articleService.getAllArticles();
+            assertThat(result).isNotNull();
+            assertThat(result).isEmpty();
+
+        }
+
     }
 
 }

@@ -1,9 +1,9 @@
 package com.aouin.springbootcrud.integration;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +17,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -146,11 +145,15 @@ public class ArticleServiceTest extends AbstractBaseTest {
         @Test
         @SneakyThrows
         void notFound() {
-            List lista = Collections.emptyList();
-            
-            Mockito.when(articleRepository.findAll()).thenReturn(lista);
 
+            //given
+            List lista = Collections.emptyList();
+            when(articleRepository.findAll()).thenReturn(lista);
+
+            //when
             List<ArticleDTO> result = articleService.getAllArticles();
+
+            //then
             assertThat(result).isNotNull();
             assertThat(result).isEmpty();
 
